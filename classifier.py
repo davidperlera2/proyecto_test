@@ -2,10 +2,10 @@ import rasterio
 import numpy as np
 import joblib
 
-model = joblib.load("modelo_rf.pkl")
+model = joblib.load("modelo_rf_2.pkl")
 
-sentinel2_path = "MarsellaOpico_2025.tif"
-sentinel1_path = "MarsellaOpico_SAR_2025.tif"
+sentinel2_path = "../Imagenes_Satelitales/Sentinel2Apopa_2018.tif"
+sentinel1_path = "../Imagenes_Satelitales/SAR_2018_a.tif"
 
 with rasterio.open(sentinel2_path) as src:
     img = src.read()
@@ -54,7 +54,7 @@ profile.update(
     nodata=-1
 )
 
-output_path = "prediccion_nueva_area_marsella_2025.tif"
+output_path = "../Results/clasificacion_2018_ap.tif"
 
 with rasterio.open(output_path, "w", **profile) as dst:
     dst.write(pred.astype(rasterio.int16), 1)

@@ -9,9 +9,9 @@ import joblib
 # 1. CARGAR DATOS
 # =========================
 
-sentinel2_path = "SanSalvador_2021.tif"
-sentinel1_path = "SAR_2021.tif"
-gt_path = "gt.tif"
+sentinel2_path = "../Imagenes_Satelitales/Sentinel2_2025.tif"
+sentinel1_path = "../Imagenes_Satelitales/SAR_2025_1.tif"
+gt_path = "../gt.tif"
 
 
 with rasterio.open(sentinel2_path) as src:
@@ -85,7 +85,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 # 4. ENTRENAR MODELO
 # =========================
 
-model = RandomForestClassifier(n_estimators=100, random_state=42, class_weight="balanced")
+model = RandomForestClassifier(n_estimators=500, random_state=42, class_weight="balanced")
 model.fit(X_train, y_train)
 
 # =========================
@@ -137,4 +137,4 @@ importances = model.feature_importances_
 for f, imp in zip(features, importances):
     print(f, imp)
 
-joblib.dump(model, "modelo_rf.pkl")
+joblib.dump(model, "modelo_rf_2.pkl")
