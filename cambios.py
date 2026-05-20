@@ -1,8 +1,8 @@
 import rasterio
 import numpy as np
 
-map_2017 = "../Results/clasificacion_2018_ap.tif"
-map_2025 = "../Results/clasificacion_2025_ap.tif"
+map_2017 = "../Results/clasificacion_2018_ap_split.tif"
+map_2025 = "../Results/clasificacion_2025_ap_split.tif"
 
 with rasterio.open(map_2017) as src:
     lulc_2017 = src.read(1)
